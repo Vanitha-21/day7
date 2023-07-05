@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>XMLHttpRequest Example</title>
+   </head>
+   <body>
+<script>
+
+var request = new XMLHttpRequest();
+request.open("GET", "https://restcountries.com/v3.1/all");
+request.send();
+request.onload = function(){
+    var Population = JSON.parse(request.response);
+    console.log(Population);
+    
+    var Countries = Population.reduce((acc,element)=>acc+element.Population);
+    console.log(Countries);
+}
+</script>
+   </body>
+</html>
